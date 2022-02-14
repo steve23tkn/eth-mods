@@ -11,13 +11,25 @@ $web3 = new Web3(new HttpProvider(new HttpRequestManager("https://ropsten.infura
 
 $eth = $web3->eth;
 
-$eth->getBalance("0x5EBbc22Cdefb71b6D885EF9B1a30843eDC3F29A0", function ($err, $data) {
+// $eth->getBalance("0x5EBbc22Cdefb71b6D885EF9B1a30843eDC3F29A0", function ($err, $data) {
+
+//         if ($err != null){
+//                 print_r($err);
+//                 return;
+//         }
+
+
+//         echo "Balance is: ". $data . " \n";
+// });
+
+$eth->blockNumber(function ($err, $data) {
 
         if ($err != null){
                 print_r($err);
                 return;
         }
 
+        var_dump(strval($data->value));
 
-        echo "Balance is: ". $data . " \n";
+        echo "block number: ". $data . " \n";
 });
