@@ -74,16 +74,21 @@ function ManualTransfer(){
 
     $eth = $web3->eth;
 
-    $eth->sendRawTransaction('0x' . $signedTransaction, function ($err, $data) {
+    $result = "";
+
+    $eth->sendRawTransaction('0x' . $signedTransaction, function ($err, $data) use (&$result){
 
         if ($err != null){
                 print_r($err);
                 return;
         }
 
+        $result = $data;
 
         echo "Tx: ". $data . " \n";
     });
+
+    var_dump($result);
 }
 
 ManualTransfer();
